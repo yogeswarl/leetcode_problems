@@ -10,6 +10,7 @@
 # Input: s = "aaab"
 # Output: ""
 
+# fastest solution
 from collections import Counter
 import heapq
 
@@ -35,6 +36,30 @@ class Solution:
             else:
                 res += char
         return res
+
+# implementation with priority queue
+# from queue import PriorityQueue
+# class Solution:
+#     def reorganizeString(self, s: str) -> str:  
+#         res = ""
+#         pq = PriorityQueue()
+#         for key, val in Counter(s).items():
+#             pq.put((-val,key))
+#         while pq.qsize() > 1:
+#             freq1,char1 = pq.get()
+#             freq2,char2 = pq.get()
+#             res += char1 + char2
+#             if freq1 + 1 < 0:
+#                 pq.put((freq1 +1,char1))
+#             if freq2 + 1 < 0:
+#                 pq.put((freq2 +1,char2))
+#         if pq.qsize():
+#             freq,char = pq.get()
+#             if freq < -1:
+#                 return ""
+#             else:
+#                 res += char
+#         return res
 
 
 sd = Solution()
